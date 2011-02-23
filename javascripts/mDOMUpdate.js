@@ -1,5 +1,5 @@
 /*
-  mDOMUpdate
+  mDOMupdate
   Version: 1.0 r1
   
   Copyright (c) 2010 Meta100 LLC.
@@ -11,22 +11,22 @@
 
 (function ($) {
 
-  if ($.mDOMUpdate === undefined) {
+  if ($.mDOMupdate === undefined) {
 
     var timer;
 
-    $.mDOMUpdate = true;
-    $.mDOMUpdateTrigger = function () {
+    $.mDOMupdate = true;
+    $.mDOMupdateTrigger = function () {
 
-      if ($.mDOMUpdate) {
+      if ($.mDOMupdate) {
 
         clearTimeout(timer);
 
         timer = setTimeout(function() {
 
-          $.mDOMUpdate = false;
+          $.mDOMupdate = false;
           $(document).trigger('DOMUpdated');
-          $.mDOMUpdate = true;
+          $.mDOMupdate = true;
         }, 50);
       }
     };
@@ -34,28 +34,28 @@
     $.fn.origDomManip = $.fn.domManip;
     $.fn.domManip = function (args, table, callback) {
   
-      $.mDOMUpdateTrigger();
+      $.mDOMupdateTrigger();
       return $(this).origDomManip(args, table, callback);
     };
 
     $.fn.origHtml = $.fn.html;
   	$.fn.html = function (value) {
 
-  		if (value !== undefined) $.mDOMUpdateTrigger();
+  		if (value !== undefined) $.mDOMupdateTrigger();
       return $(this).origHtml(value);
     };
 
     $.fn.origRemove = $.fn.remove;
   	$.fn.remove = function (elem, types, handler, pos) {
 
-  		$.mDOMUpdateTrigger();
+  		$.mDOMupdateTrigger();
       return $(this).origRemove(elem, types, handler, pos);
     };
 
     $.fn.origEmpty = $.fn.empty;
   	$.fn.empty = function () {
 
-  		$.mDOMUpdateTrigger();
+  		$.mDOMupdateTrigger();
       return $(this).origEmpty();
     };
   }
