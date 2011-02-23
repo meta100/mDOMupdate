@@ -1,0 +1,14 @@
+mDOMupdate
+Version: 1.0
+
+Copyright (c) 2011 Meta100 LLC.
+http://www.meta100.com/
+
+Licensed under the MIT license 
+http://www.opensource.org/licenses/mit-license.php 
+
+Triggers the event 'DOMUpdated' on DOM manipulation via jQuery.
+
+Install - add the script to the head after jQuery.
+
+Use - $(document).bind('DOMUpdated', function () { /* Insert code to execute here. */ });
