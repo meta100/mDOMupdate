@@ -1,17 +1,17 @@
 /*
   mDOMupdate
   Version: 1.0 r1
-  
+
   Copyright (c) 2010 Meta100 LLC.
   http://www.meta100.com/
-  
-  Licensed under the MIT license 
-  http://www.opensource.org/licenses/mit-license.php 
+
+  Licensed under the MIT license
+  http://www.opensource.org/licenses/mit-license.php
 */
 
 (function ($) {
 
-  if ($.mDOMupdate === undefined) {
+  if ('undefined' === typeof $.mDOMupdate) {
 
     var timer;
 
@@ -30,10 +30,10 @@
         }, 50);
       }
     };
-  
+
     $.fn.origDomManip = $.fn.domManip;
     $.fn.domManip = function (args, table, callback) {
-  
+
       $.mDOMupdateTrigger();
       return $(this).origDomManip(args, table, callback);
     };
@@ -41,7 +41,7 @@
     $.fn.origHtml = $.fn.html;
   	$.fn.html = function (value) {
 
-  		if (value !== undefined) $.mDOMupdateTrigger();
+      if ('undefined' !== typeof value) $.mDOMupdateTrigger();
       return $(this).origHtml(value);
     };
 
